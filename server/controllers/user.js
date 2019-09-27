@@ -75,6 +75,20 @@ class UserController {
             })
             .catch(next)
     }
+
+    static checkToken(req, res, next) {
+        const { token } = req.headers
+
+        try {
+            req.decode = verifyToken(token)
+            res.status(200).json(req.decode)
+        } catch (err) {
+            next({
+                status: 403,
+                message: `Access token is invalid!`
+            })
+        }
+    }
 }
 
 module.exports = UserController

@@ -3,13 +3,14 @@
         <ul class="flex items-center">
             <li>
                 <a @click.prevent="selectNav('dashboard')" href="#">
-                    <i class="fab fa-wordpress fa-2x p-2"></i>
+                    <!-- <i class="fab fa-wordpress fa-2x p-2"></i> -->
+                    <i class="fab fa-vuejs fa-2x p-2"></i>
                 </a>
             </li>
             <li v-if="isLogin === true" class="mx-3">
                 <a @click.prevent="selectNav('dashboard')" href="#" class="dashboardBtn">
                     <i class="fas fa-home fa-1x"></i>
-                    <span class="mr-4">My Blog</span>
+                    <span class="mr-4">V PRESS</span>
                 </a>
             </li>
             <li v-if="isLogin === true" class="mx-3">

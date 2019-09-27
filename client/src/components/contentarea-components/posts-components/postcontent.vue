@@ -8,6 +8,14 @@
                     <h3 class="text-2xl">{{ article.title }}</h3>
                 </a>
                 <p class="text-sm" v-html="article.content"></p>
+                <div class="flex mt-2 text-xs">
+                    <div 
+                        v-for="(tag, index) in article.tags" 
+                        :key="index"
+                        class="bg-gray-200 rounded mr-2 px-2 text-xs">
+                        {{ tag }}
+                    </div>
+                </div>
                 <small class="text-gray-600 text-xs">author : {{ article.userId.email }}</small>
             </div>
             <img class="ml-auto" :src="article.url" alt="">

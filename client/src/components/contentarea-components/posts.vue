@@ -17,7 +17,8 @@
             v-else-if="loading === false"
             :articles="articles" 
             @editPost="editPost"
-            @deletePost="deletePost"></postcontent>
+            @deletePost="deletePost"
+            class="h-64"></postcontent>
     </div>
 </template>
 
@@ -36,7 +37,8 @@ export default {
     props: ['alert'],
     data() {
         return {
-           server: 'http://34.87.72.235',
+        //    server: 'http://34.87.72.235',
+            server: 'http://localhost:3000',
            token: localStorage.getItem('token'),
            articles: [],
            loading: false
@@ -64,6 +66,7 @@ export default {
             })
         },
         editPost(selectedArticle) {
+            console.log(selectedArticle);
             this.$emit('editPost', selectedArticle)
         },
         deletePost(selectedArticle) {

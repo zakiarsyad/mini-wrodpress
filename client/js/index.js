@@ -1,6 +1,6 @@
 
-const server = `http://35.247.163.135`
-// const server = `http://localhost:3000`
+// const server = `http://35.247.163.135`
+const server = `http://localhost:3000`
 
 const app = new Vue({
     el: '#app',

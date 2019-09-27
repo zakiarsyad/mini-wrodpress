@@ -9,12 +9,9 @@ module.exports = (err, req, res, next) => {
     } else if (err.name === 'ValidationError') {
         status = 400
         message = err.message
-        // message = []
-        // for (error in err.errors) message.push(err.errors[error].message)
-
     } else {
         status = err.status || 500
-        message = err.message || `Internal server error`
+        message = err.message || `Internal server error`  
     }
 
     console.log(status, message)

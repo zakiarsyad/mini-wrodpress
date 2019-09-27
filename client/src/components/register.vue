@@ -56,7 +56,8 @@ export default {
                 email: '',
                 password: ''
             },
-            server: 'http://34.87.72.235',
+            // server: 'http://34.87.72.235',
+            server: 'http://localhost:3000',
             loading: false,
             alert: {
                 status: '',

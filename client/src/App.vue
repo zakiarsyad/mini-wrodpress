@@ -19,6 +19,7 @@ import sidebar from './components/sidebar'
 import contentarea from './components/contentarea'
 import login from './components/login'
 import register from './components/register'
+import axios from 'axios'
 
 export default {
     components: {
@@ -36,16 +37,19 @@ export default {
                tags: [],
                image: ''
            },
+           tags: [],
            isLogin: false,
            isRegistered: true,
            user: {},
-           alert: {}
+           alert: {},
+           server: 'http://localhost:3000',
        }
     },
     methods: {
        selectNav(selectedNav) {
            this.selectedNav = selectedNav
            this.selectedArticle = {}
+           this.selectedArticle.tags = []
        },
        editPost(selectedArticle) {
            this.selectedArticle = selectedArticle
@@ -68,9 +72,10 @@ export default {
            this.user = {}
        },
        addTag(tagInput) {
-           console.log('masuk app', tagInput);
-           this.selectedArticle.tags.push(tagInput)
-           console.log(this.selectedArticle.tags);
+           console.log(this.tags);
+           console.log('masuk xxx app', tagInput);
+           this.tags.push(tagInput)
+           console.log(this.tags);
        },
        removeTag(tag) {
             for (let i = 0; i < this.selectedArticle.tags.length; i++){
@@ -79,10 +84,26 @@ export default {
                     break
                 }
             }
+       },
+       checkToken() {
+
+           axios({
+                method: `post`,
+                url: `${this.server}/users/checkToken`,
+                headers: {
+                    token: localStorage.getItem('token')
+                }
+            })
+                .then(({ data }) => {
+                    console.log('berhasil');
+                })
        }
     },
     created: function() {
-        if(localStorage.getItem('token')) this.isLogin = true
+        if(localStorage.getItem('token')) {
+            this.isLogin = true
+            // this.checkToken()
+        }
         selectedNav: 'dashboard'
     }
 }

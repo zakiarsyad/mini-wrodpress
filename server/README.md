@@ -26,7 +26,7 @@ Response :
     "_id": "5d7b993f3e28e725c5af3f16",
     "email": "admin@mail.com"
 }
-```  
+```
 
 Route | HTTP | Headers | Body
 ----- | ---- | ------- | ----
@@ -38,7 +38,7 @@ Response :
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5c.........."
 }
-```  
+```
 
 Route | HTTP | Headers | Body
 ----- | ---- | ------- | ----
@@ -50,7 +50,7 @@ Response :
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5c.........."
 }
-``` 
+```
 
 ## LIST OF ARTICLE ROUTER
 
@@ -97,7 +97,7 @@ Response :
         "__v": 0
     }
 ]
-``` 
+```
 
 Route | HTTP | Headers | Body | Descrition | Additional info
 ----- | ---- | ------- | ---- | ---------- | ---------------
@@ -120,7 +120,7 @@ Response :
     "updatedAt": "2019-09-15T09:54:10.580Z",
     "__v": 0
 }
-```  
+```
 
 Route | HTTP | Headers | Body | Descrition | Additional info
 ----- | ---- | ------- | ---- | ---------- | ---------------
@@ -146,7 +146,7 @@ Response :
     "updatedAt": "2019-09-15T09:55:11.477Z",
     "__v": 0
 }
-```  
+```
 
 Route | HTTP | Headers | Body | Descrition | Additional info
 ----- | ---- | ------- | ---- | ---------- | ---------------
@@ -169,7 +169,7 @@ Response :
     "updatedAt": "2019-09-15T10:51:35.282Z",
     "__v": 1
 }
-```  
+```
 
 Route | HTTP | Headers | Body | Descrition | Additional info
 ----- | ---- | ------- | ---- | ---------- | ---------------
@@ -192,7 +192,7 @@ Response :
     "updatedAt": "2019-09-15T09:54:10.580Z",
     "__v": 0
 }
-```  
+```
 
 Route | HTTP | Headers | Body | Descrition | Additional info
 ----- | ---- | ------- | ---- | ---------- | ---------------

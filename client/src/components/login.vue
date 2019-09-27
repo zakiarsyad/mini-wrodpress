@@ -77,8 +77,8 @@ export default {
                 email: '',
                 password: ''
             },
-            server: 'http://34.87.72.235',
-            // server: 'http://localhost:3000',
+            // server: 'http://34.87.72.235',
+            server: 'http://localhost:3000',
             loading: false,
             googleSignInParams: {
                 client_id: '499897919347-nvooomqqkdib60v5sm3gk4h66qtnnp05.apps.googleusercontent.com'

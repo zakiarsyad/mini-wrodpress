@@ -59,7 +59,7 @@ export default {
             this.$emit('save')
         },
         addTag(tagInput) {
-            console.log('masuk contnetarea');
+            // console.log('masuk contnetarea');
             this.$emit('addTag', tagInput)
         },
         removeTag(tag) {

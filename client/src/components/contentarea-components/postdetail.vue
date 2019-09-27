@@ -15,17 +15,31 @@
                     placeholder="Yout title here"
                     v-model="selectedArticle.title">
                 <wysiwyg v-model="selectedArticle.content"></wysiwyg>
+                <div class="flex mt-2">
+                    <div 
+                        v-for="(tag, index) in articleTags" 
+                        :key="index"
+                        class="bg-white rounded mr-2 px-2">
+                        {{ tag }}
+                        <button @click.prevent="removeTag(index)">
+                            <i class="fas fa-times ml-2"></i>
+                        </button>
+                    </div>
+                </div>
                 <input
                     type="text"
                     class="text-base my-3 mr-1 p-1 bg-white focus:outline-none rounded"
                     placeholder="Add more tag here"
-                    v-model="articleTags">
+                    v-model="tagInput">
+                <button @click.prevent="addTag">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <br>
                 <input
                     type="file"
                     ref="image"
                     accept="image/*"
-                    v-on:change="handleimage"
-                    required>
+                    v-on:change="handleimage">
                 <div class="flex">
                     <button
                         type="submit"
@@ -49,8 +63,8 @@ export default {
     props: ['selectedArticle'],
     data() {
         return {
-            server: 'http://34.87.72.235',
-            // server: 'http://localhost:3000',
+            // server: 'http://34.87.72.235',
+            server: 'http://localhost:3000',
             token: localStorage.getItem('token'),
             loading: false,
             alert: {
@@ -59,24 +73,26 @@ export default {
             },
             tagInput: '',
             image: null,
-            articleTags: ''
+            articleTags: [],
+            editedImage: ''
         }
     },
     methods: {
         savearticle() {
             this.loading = true
 
-            this.selectedArticle.tags = []
-
-            this.articleTags.split(' ').forEach(el => {
-                this.selectedArticle.tags.push(el)
-            })
+            // this.selectedArticle.tags = []
 
             let formData = new FormData()
+
+            this.articleTags.forEach(el => {
+                formData.append("tags", el)
+            })
+
             formData.append("title", this.selectedArticle.title)
             formData.append("content", this.selectedArticle.content)
-            formData.append("tags", JSON.stringify(this.selectedArticle.tags))
-            formData.append("image", this.selectedArticle.image)
+            console.log(this.editedImage);
+            if (this.editedImage) formData.append("image", this.editedImage)
 
             let method, url
 
@@ -111,20 +127,26 @@ export default {
 
                     this.alert.msg = err.response.data.message
 
-                    if (this.alert.msg === "Cannot read property 'cloudStoragePublicUrl' of undefined") this.alert.msg = "Please add image"
+                    // if (this.alert.msg === "Cannot read property 'cloudStoragePublicUrl' of undefined") this.alert.msg = "Please add image"
                 })
         },
         addTag() {
-            this.$emit('addTag', this.tagInput)
+            this.articleTags.push(this.tagInput)
+            console.log(this.articleTags);
+            this.tagInput = ''
         },
-        removeTag(tag) {
-            this.$emit('removeTag', tag)
+        removeTag(index) {
+            this.articleTags.splice(index, 1)
         },
         handleimage(){
             let reader = new FileReader()
             reader.readAsDataURL(this.$refs.image.files[0])
-            this.selectedArticle.image = this.$refs.image.files[0]
+            this.editedImage = this.$refs.image.files[0]
         }
+    },
+    created: function () {
+        if (this.selectedArticle.tags) this.articleTags = this.selectedArticle.tags
+        else this.articleTags = []
     }
 }
 </script>

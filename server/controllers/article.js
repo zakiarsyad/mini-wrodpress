@@ -38,7 +38,9 @@ class ArticleController {
 
     static update(req, res, next) {
         const { title, content, tags } = req.body
-        const url = req.file.cloudStoragePublicUrl
+        let url
+        if (req.file) url = req.file.cloudStoragePublicUrl
+
         const { id } = req.params
 
         Article.findById(id)
@@ -61,16 +63,14 @@ class ArticleController {
                         .bucket(CLOUD_BUCKET)
                         .file(filename)
                         .delete()
-
-                    article.title = title
-                    article.content = content
-                    article.tags = tags
-                    article.save()
-                        .then(article => {
-                            res.status(200).json(article)
-                        })
-                        .catch(next)
                 }
+                if (title) article.title = title
+                if (content) article.content = content
+                if (tags) article.tags = tags
+                return article.save()
+            })
+            .then(article => {
+                res.status(200).json(article)
             })
             .catch(next)
     }
