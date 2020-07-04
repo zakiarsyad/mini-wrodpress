@@ -1,1 +1,3 @@
-# mini-wp
+# mini-wordpress-client
+
+Build with Vue
