@@ -1,4 +1,4 @@
-# mini-wordpress-client
+# mini-wordpress-server
 
 Build with Node.js
 
