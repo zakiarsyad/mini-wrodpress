@@ -1,6 +1,6 @@
 # mini-wordpress
 
-Mini clone of wordpress, build with Vue.js for the front-end and Node.js for backend
+Mini clone of wordpress app built using Vue.js, Node.js, Google OAuth, and Google Cloud Storage (GCS)
 
 
 <img src="./wordpress.png">
